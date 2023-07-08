@@ -1,0 +1,72 @@
+.wrapper {
+  background: linear-gradient(#010617,
+  #080a21,
+  #181c54,
+  #2b3677,
+  #406691);  
+  height: 1000px;
+  text-align: center;
+  color: white;
+  border-style: solid;
+  border-radius: 10px;
+  height: 350px;
+  width: 300px;
+  padding: 15px 15px 15px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.root {
+  background: linear-gradient(#010617,
+  #080a21,
+  #181c54,
+  #2b3677,
+  #406691);  
+  height: 1000px;
+  text-align: center;
+  color: white;
+}
+
+.inputLogin {
+  border-radius: 5px;
+  padding: 3px;
+  background-color:     #2b3677;
+  border-style: solid;
+  border-color: white;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.inputPassword {
+  border-radius: 5px;
+  padding: 3px;
+  background-color:     #2b3677;
+  border-style: solid;
+  border-color: white;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+.top {
+  font-size: 25px;
+}
+
+.login {
+  font-size: 23px;
+}
+
+.password {
+  font-size: 23px;
+}
+
+.button {
+  border-radius: 10px;
+  background-color: #3943d1;
+  margin-top: 25px;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}

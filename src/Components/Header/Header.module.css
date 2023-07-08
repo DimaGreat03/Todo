@@ -1,0 +1,23 @@
+.root {
+  height: 80px;
+  font-size: 24px;
+  color: #fffdfd;
+  background-color: #1c1a5d;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+.exit {
+  color: rgb(255, 255, 255);
+  float: right;
+  margin-top: 20px;
+  margin-right: 30px;
+  background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
+  border-radius: 10px;
+  border-color: rgb(255, 255, 255);
+}
+
+.nameTodo {
+  color: rgb(255, 255, 255);
+}
