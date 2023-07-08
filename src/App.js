@@ -8,7 +8,7 @@ import DeletedTasks from "./Components/Pages/DeletedTasks/DeletedTasks";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
-  const [auto, setAuto] = useState(false);
+  const [auto, setAuto] = useState(true);
   const [deletedTasks, setDeletedTasks] = React.useState([
     { id: 1, name: "Удаленная Задача №1", day: "08.07.2023", time: "14:35:33" },
     { id: 2, name: "Удаленная Задача №2", day: "08.07.2023", time: "12:05:13" },
@@ -23,7 +23,7 @@ const App = () => {
     },
     {
       login: "Bair",
-      password: "Macho-03",
+      password: "A186MP",
     },
   ];
 
