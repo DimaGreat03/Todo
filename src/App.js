@@ -9,11 +9,15 @@ import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [auto, setAuto] = useState(true);
-  const [deletedTasks, setDeletedTasks] = React.useState(['dima', 'petya', 'kolya']);
+  const [deletedTasks, setDeletedTasks] = React.useState([
+    {id: 1, name: "Удаленная Задача №1", day: '08.07.2023', time: '14:35:33'},
+    {id: 2, name: "Удаленная Задача №2", day: '08.07.2023', time: '12:05:13'},
+    {id: 3, name: "Удаленная Задача №3", day: '08.07.2023', time: '14:45:32'}
+]);
 
 
-  const login = "Dima";
-  const password = "[jnlju18";
+  const login = "Smit";
+  const password = "007";
 
   const ex = (login1, password1) => {
     if (login1 == login && password1 == password) {
@@ -21,9 +25,10 @@ const App = () => {
     }
   };
 
-  const saveToDo = (name, day) => {
+  const saveToDo = (id, name, day, time) => {
+    let delTask = {id: id, name: name, day: day, time: time}
     setDeletedTasks(
-        [...deletedTasks, (name + " " + "(" + day + ")")]
+        [...deletedTasks, delTask]
     )
 }
 

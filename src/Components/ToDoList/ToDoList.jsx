@@ -24,7 +24,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
           setDima(response);
         });
       };
-      
+
       const editTask = (id) => {
         axios
           .put(
@@ -82,7 +82,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
                                   setPopup(!popup)}}>
                                        {popup? (popupId == item.id ? item.time: item.day) : item.day}
                                   </span>
-                                <Button className={s.btn}  onClick={() => deleteTask(item.id) || saveToDo(item.name, item.day) }><FontAwesomeIcon icon={faTrash}/></Button>
+                                <Button className={s.btn}  onClick={() => deleteTask(item.id) || saveToDo(item.id, item.name, item.day, item.time) }><FontAwesomeIcon icon={faTrash}/></Button>
                                 <Button className={s.btn} onClick={() => {editTodo2(item.id, item.name) }}><FontAwesomeIcon icon={faPenToSquare}/></Button>
                                 <Button className={s.btn} onClick={() => editStatus(item.id, item.status)}>{item.status?<FontAwesomeIcon icon={faLockOpen}/> : <FontAwesomeIcon icon={faLock}/>}</Button>
                             </div>

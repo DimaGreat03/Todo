@@ -11,6 +11,13 @@ const Home = ({saveToDo}) => {
   const [sort, setSort] = React.useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
 
+//   const returnTask = (id, name, day, time) => {
+//     let rerturnTask = {id: id, name: name, day: day, time: time}
+//     setItems(
+//         [...items, returnTask]
+//     )
+// }
+
   React.useEffect(() => {
     axios
       .get(
@@ -30,7 +37,7 @@ const Home = ({saveToDo}) => {
         items={items}
         saveToDo={saveToDo}
       />
-      <Sort setSort={setSort} />
+      <Sort setSort={setSort}/>
       <Paginator setCurrentPage={setCurrentPage} sort={sort} dima={observer} />
     </div>
   );
