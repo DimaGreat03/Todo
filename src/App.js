@@ -8,7 +8,7 @@ import DeletedTasks from "./Components/Pages/DeletedTasks/DeletedTasks";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
-  const [auto, setAuto] = useState(false);
+  const [auto, setAuto] = useState(true);
   const [deletedTasks, setDeletedTasks] = React.useState(['dima', 'petya', 'kolya']);
 
 
