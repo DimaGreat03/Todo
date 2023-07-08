@@ -2,13 +2,13 @@ import axios from "axios";
 import React from "react";
 import s from "./pagination.module.css";
 
-const Paginator = ({ setCurrentPage, sort, dima }) => {
+const Paginator = ({ setCurrentPage, sort, dima, usersAccount }) => {
   const [countPages, setCountPages] = React.useState("");
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     axios
-      .get(`https://649299ad428c3d2035d05219.mockapi.io/names?&status=${sort}`)
+      .get(`https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}?&status=${sort}`)
       .then((response) => setCountPages(response.data.length));
   }, [sort, dima]);
 

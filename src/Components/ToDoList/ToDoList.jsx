@@ -9,7 +9,7 @@ import {faLock} from "@fortawesome/free-solid-svg-icons";
 import {faLockOpen} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const ToDoList = ({items, setDima, saveToDo}) => {
+const ToDoList = ({items, setDima, saveToDo, usersAccount}) => {
 
     const [edit, setEdit] = useState(null)
     const [value, setValue] = useState('')
@@ -19,7 +19,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
 
     
     const deleteTask = (id) => {
-        fetch(`https://649299ad428c3d2035d05219.mockapi.io/names/${id}`, {
+        fetch(`https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}/${id}`, {
           method: "DELETE",
         }).then((response) => {
           setDima(response);
@@ -30,7 +30,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
       const editTask = (id) => {
         axios
           .put(
-            `https://649299ad428c3d2035d05219.mockapi.io/names/${id}`,
+            `https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}/${id}`,
             {name: value},{})
           .then((response) => {
             setDima(response);
@@ -42,7 +42,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
         setValue('')
         axios
           .put(
-            `https://649299ad428c3d2035d05219.mockapi.io/names/${id}`,
+            `https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}/${id}`,
             {status: status? false : true},{})
           .then((response) => {
             setDima(response);

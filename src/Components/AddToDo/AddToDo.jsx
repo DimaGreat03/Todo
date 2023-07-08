@@ -5,7 +5,7 @@ import s from "./AddToDo.module.css"
 import axios from "axios";
 
 
-const AddToDo = ({ setDima}) => {
+const AddToDo = ({ setDima, usersAccount}) => {
 
     const [value, setValue] = useState('')
     let day = new Date().toISOString().slice(0,10).split('-').reverse().join('.') 
@@ -15,7 +15,7 @@ const AddToDo = ({ setDima}) => {
       setValue("")
         axios
           .post(
-            `https://649299ad428c3d2035d05219.mockapi.io/names/`,
+            `https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}/`,
             {name: value, status: true, time: time, day: day}, {})
           .then((response) => {
             setDima(response);
