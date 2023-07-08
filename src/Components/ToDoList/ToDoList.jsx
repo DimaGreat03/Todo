@@ -15,6 +15,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
     const [value, setValue] = useState('')
     const [popup, setPopup] = useState(false)
     const [popupId, setPopupId] = useState("")
+    const [disabled, setDisabled] = useState(0)
 
     
     const deleteTask = (id) => {
@@ -22,6 +23,7 @@ const ToDoList = ({items, setDima, saveToDo}) => {
           method: "DELETE",
         }).then((response) => {
           setDima(response);
+          setDisabled(false)
         });
       };
 
@@ -82,7 +84,15 @@ const ToDoList = ({items, setDima, saveToDo}) => {
                                   setPopup(!popup)}}>
                                        {popup? (popupId == item.id ? item.time: item.day) : item.day}
                                   </span>
-                                <Button className={s.btn}  onClick={() => deleteTask(item.id) || saveToDo(item.id, item.name, item.day, item.time) }><FontAwesomeIcon icon={faTrash}/></Button>
+                                <Button 
+                                   className={s.btn} 
+                                   disabled={item.id == disabled}  
+                                   onClick={() => {
+                                        deleteTask(item.id)
+                                        saveToDo(item.id, item.name, item.day, item.time)
+                                        setDisabled(item.id)}}>
+                                        <FontAwesomeIcon icon={faTrash}/>
+                                </Button>
                                 <Button className={s.btn} onClick={() => {editTodo2(item.id, item.name) }}><FontAwesomeIcon icon={faPenToSquare}/></Button>
                                 <Button className={s.btn} onClick={() => editStatus(item.id, item.status)}>{item.status?<FontAwesomeIcon icon={faLockOpen}/> : <FontAwesomeIcon icon={faLock}/>}</Button>
                             </div>

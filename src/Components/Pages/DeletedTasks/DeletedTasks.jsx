@@ -5,17 +5,17 @@ import axios from "axios";
 
 
 
-const DeletedTasks = ({ deletedTasks }) => {
+const DeletedTasks = ({ deletedTasks, setDeletedTasks }) => {
   const [popup, setPopup] = React.useState(false)
   const [popupId, setPopupId] = React.useState("")
 
-  const returnTask = (value, time, day) => {
+  const returnTask = (value, time, day, id) => {
       axios
         .post(
           `https://649299ad428c3d2035d05219.mockapi.io/names/`,
           {name: value, status: true, time: time, day: day}, {})
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          setDeletedTasks([...deletedTasks].filter(item => item.id != id))
         });
     };
 
@@ -31,7 +31,7 @@ const DeletedTasks = ({ deletedTasks }) => {
             
             <button 
             className={s.buttonTime} 
-            onClick={() => returnTask(item.name, item.time, item.day)}
+            onClick={() => returnTask(item.name, item.time, item.day, item.id)}
             >Вернуть</button>
 
             <button className={s.buttonTime}
