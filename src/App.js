@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 const App = () => {
-  const [auto, setAuto] = useState(false);
+  const [auto, setAuto] = useState(true);
   const [usersAccount, setUsers] = React.useState("")
   const[userId, setUserId] = React.useState("")
   const users = [{ login: "Smit", password: "007"}];
