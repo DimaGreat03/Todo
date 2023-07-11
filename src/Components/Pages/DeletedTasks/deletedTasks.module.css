@@ -3,7 +3,10 @@
 .li {
   font-size: 18px;
   padding: 15px;
-  margin-top: 10px;
+  margin-top: 24px;
+  margin-top: 15px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .li:hover {
@@ -19,6 +22,7 @@
   padding: 7px;
   background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
   color: white;
+  font-weight: 500;
 }
 
 .buttonTime {
@@ -30,7 +34,8 @@
   padding: 7px;
   background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
   color: white;
-  
+  font-weight: 600;
+
 }
 
 .buttonTime:hover {

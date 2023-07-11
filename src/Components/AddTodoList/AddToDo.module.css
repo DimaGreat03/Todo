@@ -1,0 +1,15 @@
+
+
+
+
+.addToDoForm {
+    display: flex;
+    flex: 1;
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+
+
+.btn {
+    margin-left: 13px;
+}

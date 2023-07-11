@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import s from "./sort.module.css";
 import React from "react";
+import axios from "axios";
+import TodoLists from "../Pages/Todolists/Todolists";
 
 const Sort = ({ setSort }) => {
   const [list, setList] = React.useState([
@@ -9,6 +11,7 @@ const Sort = ({ setSort }) => {
     { name: "завершенные", status: "false" },
   ]);
   const [index, setIndex] = React.useState(0);
+
 
   return (
     <div>
@@ -25,17 +28,16 @@ const Sort = ({ setSort }) => {
       <Link to="/deleted">
         <button className={s.notActive}> удаленные</button>
       </Link>
+
+      {/* {todoLists.map((item) => {
+        return (
+          <Link to="/todolist">
+            <button className={s.notActive}>{item.name}</button>
+          </Link>
+        );
+      })} */}
     </div>
   );
 };
 
 export default Sort;
-
-{
-  /* <button  className={s.sort} onClick={() => setSort("")}>все</button>
-      <button  className={s.sort} onClick={() => setSort(true)}>активные</button>
-      <button  className={s.sort} onClick={() => setSort(false)}>завершенные</button>
-      <Link to="/deleted">
-         <button className={s.sort}> удаленные</button>
-      </Link> */
-}

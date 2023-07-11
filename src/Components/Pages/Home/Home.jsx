@@ -1,33 +1,83 @@
 import React from "react";
-import AddToDo from "../../AddToDo/AddToDo";
 import Paginator from "../../Pagination/Paginator";
 import Sort from "../../Sort/Sort";
-import ToDoList from "../../ToDoList/ToDoList";
+import AddToDoList from "../../AddTodoList/AddTodoList";
+import { Link } from "react-router-dom";
+import s from "./home.module.css"
 import axios from "axios";
 
-const Home = ({ saveToDo, usersAccount }) => {
-  const [items, setItems] = React.useState([]);
+
+const Home = ({ usersAccount, setUserId, todoLists, setDima, dima, setCurrentPage }) => {
   const [observer, setObserver] = React.useState("");
   const [sort, setSort] = React.useState("");
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [popup, setPopup] = React.useState(false)
+  const [popupId, setPopupId] = React.useState("")
+  const [edit, setEdit] = React.useState(null)
+  const [value, setValue] = React.useState('')
 
+  const deleteTodo = (id) => {
+    fetch(`https://649299ad428c3d2035d05219.mockapi.io/users/${id}/`, {
+      method: "DELETE",
+    }).then((response) => {
+      setDima(response);
+    });
+  };
 
-    React.useEffect(() => {
-      axios
-        .get(
-          `https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}?page=${currentPage}&limit=8&status=${sort}`
-        )
-        .then((response) => {
-          setItems(response.data);
-        });
-    }, [observer, sort, currentPage, usersAccount]);
+  const editTodo = (id) => {
+    axios
+      .put(
+        `https://649299ad428c3d2035d05219.mockapi.io/users/${id}`,
+        {name: value},{})
+      .then((response) => {
+        setDima(response);
+        setEdit(null)
+        setValue('')
+      });
+  };
 
   return (
     <div>
-      <AddToDo setDima={setObserver} usersAccount={usersAccount}/>
-      <ToDoList setDima={setObserver} items={items} saveToDo={saveToDo} usersAccount={usersAccount}/>
-      <Sort setSort={setSort} />
-      <Paginator setCurrentPage={setCurrentPage} sort={sort} dima={observer} usersAccount={usersAccount}/>
+      <AddToDoList setDima={setDima} />
+      <Link to="/deleted">
+        <button className={s.notActive}> Deleted</button>
+      </Link>
+      {todoLists.map((item) => {
+        return (
+          <div className={s.main}>
+             {
+                edit == item.id 
+                ? <input value={value} onChange={e => setValue(e.target.value)} className={s.input}/> 
+                : <div className={s.div}>
+                    <button className={s.button} onClick={() => deleteTodo(item.id)}>Delete</button>
+                    <button className={s.button} onClick={() => setEdit(item.id) || setValue(item.name)}>Edit</button>              
+                    <button className={s.button} onClick={() => {setPopupId(item.id) || setPopup(!popup)}}>
+                            {popup? (popupId == item.id ? item.time: item.day) : item.day}
+                    </button>
+                </div>
+             }
+             
+             {
+               edit == item.id 
+               ? <span>
+                   <button className={s.button} onClick={() => editTodo(item.id)}>Save</button> 
+                   <button className={s.button} onClick={() => setEdit(false)}>Cancel</button>
+                </span>
+               : <Link className={s.link} to="/todolist">
+                <li onClick={() => setUserId(item.id)} className={s.li}>{item.name}  
+                </li>
+                </Link> 
+             }
+                
+          </div>
+        );
+      })}
+      <Paginator
+        setCurrentPage={setCurrentPage}
+        sort={sort}
+        setDima={setDima}
+        dima={dima}
+        usersAccount={usersAccount}
+      />
     </div>
   );
 };

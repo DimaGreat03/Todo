@@ -6,62 +6,55 @@ import PageAuto from "./Components/pageAuto/pageAuto";
 import Home from "./Components/Pages/Home/Home";
 import DeletedTasks from "./Components/Pages/DeletedTasks/DeletedTasks";
 import { Route, Routes } from "react-router-dom";
+import TodoLists from "./Components/Pages/Todolists/Todolists";
+import axios from "axios";
+
 
 const App = () => {
-  const [auto, setAuto] = useState(true);
-  const [deletedTasks, setDeletedTasks] = React.useState([
-    { id: 1, name: "Удаленная Задача №1", day: "08.07.2023", time: "14:35:33" },
-    { id: 2, name: "Удаленная Задача №2", day: "08.07.2023", time: "12:05:13" },
-    { id: 3, name: "Удаленная Задача №3", day: "08.07.2023", time: "14:45:32" },
-  ]);
+  const [auto, setAuto] = useState(false);
   const [usersAccount, setUsers] = React.useState("")
+  const[userId, setUserId] = React.useState("")
+  const users = [{ login: "Smit", password: "007"}];
+  const [todoLists, setTodoLists] = React.useState([]);
+  const [dima, setDima] = React.useState('')
+  const [currentPage, setCurrentPage] = React.useState(1)
+  const [deletedTasks, setDeletedTasks] = React.useState([]);
 
-  const users = [
-    {
-      login: "Smit",
-      password: "007",
-    },
-    {
-      login: "Bair",
-      password: "A186MP",
-    },
-  ];
 
   const ex = (login1, password1) => {
     if (login1 == users[0].login && password1 == users[0].password) {
       setAuto(false);
-      setUsers(users[0].login)
-    }
-    if (login1 == users[1].login && password1 == users[1].password) {
-      setAuto(false);
-      setUsers(users[1].login)
     }
   };
 
-  const saveToDo = (id, name, day, time) => {
-    let delTask = { id: id, name: name, day: day, time: time };
+  const saveToDo = (id, name, day, time, userName) => {
+    let delTask = { id: id, name: name, day: day, time: time, user: userName };
     setDeletedTasks([...deletedTasks, delTask]);
   };
 
+  React.useEffect(() => {
+    axios
+      .get(`https://649299ad428c3d2035d05219.mockapi.io/users?page=${currentPage}&limit=8`)
+      .then((response) => {
+        setTodoLists(response.data)
+      });
+  }, [dima, currentPage]);
+
+
+
   return (
-    <div>
+    <div className="App">
       {auto ? (
         <PageAuto ex={ex} />
       ) : (
-        <div className="App">
+        <div >
           <Header setAuto={setAuto} />
           <Routes>
-            <Route path="/" element={<Home saveToDo={saveToDo} usersAccount={usersAccount}/>} />
-            <Route
-              path="deleted"
-              element={
-                <DeletedTasks
-                  usersAccount={usersAccount}
-                  deletedTasks={deletedTasks}
-                  setDeletedTasks={setDeletedTasks}
-                />
-              }
+            <Route path="/" element={<Home setCurrentPage={setCurrentPage} dima={dima} setDima={setDima} todoLists={todoLists} setUserId={setUserId} saveToDo={saveToDo} usersAccount={usersAccount}/>} />
+            <Route path="deleted" element={<DeletedTasks usersAccount={usersAccount}
+                     deletedTasks={deletedTasks} setDeletedTasks={setDeletedTasks}/>}
             />
+            <Route path="/todolist" element={<TodoLists saveToDo={saveToDo} name={userId}/>}/>
           </Routes>
         </div>
       )}

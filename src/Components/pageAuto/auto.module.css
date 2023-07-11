@@ -4,28 +4,17 @@
   #181c54,
   #2b3677,
   #406691);  
-  height: 1000px;
   text-align: center;
   color: white;
   border-style: solid;
   border-radius: 10px;
-  height: 350px;
+  height: 400px;
   width: 300px;
   padding: 15px 15px 15px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
-.root {
-  background: linear-gradient(#010617,
-  #080a21,
-  #181c54,
-  #2b3677,
-  #406691);  
-  height: 1000px;
-  text-align: center;
-  color: white;
-}
 
 .inputLogin {
   border-radius: 5px;
@@ -60,6 +49,7 @@
 
 .password {
   font-size: 23px;
+  margin-top: 10px
 }
 
 .button {

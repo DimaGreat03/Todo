@@ -25,7 +25,7 @@ const AddToDo = ({ setDima, usersAccount}) => {
 
     return <Row>
         <Col className={s.addToDoForm}>
-            <FormControl placeholder={'введите задачу'}
+            <FormControl placeholder={'enter a new task'}
                    value={value}
                    onChange={(e) => setValue(e.target.value)}/>
             <Button className={s.btn} onClick={addPost}

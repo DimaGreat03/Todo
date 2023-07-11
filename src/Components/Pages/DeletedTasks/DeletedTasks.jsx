@@ -5,14 +5,14 @@ import axios from "axios";
 
 
 
-const DeletedTasks = ({ deletedTasks, setDeletedTasks, usersAccount }) => {
+const DeletedTasks = ({ deletedTasks, setDeletedTasks}) => {
   const [popup, setPopup] = React.useState(false)
   const [popupId, setPopupId] = React.useState("")
 
-  const returnTask = (value, time, day, id) => {
+  const returnTask = (value, time, day, id, user) => {
       axios
         .post(
-          `https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}/`,
+          `https://649299ad428c3d2035d05219.mockapi.io/users/${user}/tasks`,
           {name: value, status: true, time: time, day: day}, {})
         .then(() => {
           setDeletedTasks([...deletedTasks].filter(item => item.id != id))
@@ -22,7 +22,7 @@ const DeletedTasks = ({ deletedTasks, setDeletedTasks, usersAccount }) => {
   return (
     <div>
       <Link to="/">
-        <button className={s.button}> Вернуться к задачам</button>
+        <button className={s.button}> Back home</button>
       </Link>
       <div className={s.tasks}>
         <div>
@@ -31,8 +31,8 @@ const DeletedTasks = ({ deletedTasks, setDeletedTasks, usersAccount }) => {
             
             <button 
             className={s.buttonTime} 
-            onClick={() => returnTask(item.name, item.time, item.day, item.id)}
-            >Вернуть</button>
+            onClick={() => returnTask(item.name, item.time, item.day, item.id, item.user )}
+            >return</button>
 
             <button className={s.buttonTime}
                onClick={() =>{

@@ -8,9 +8,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <div className="main">
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </div>
 );
 
 // If you want to start measuring performance in your app, pass a function

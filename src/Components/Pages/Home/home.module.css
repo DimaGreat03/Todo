@@ -1,0 +1,82 @@
+
+
+
+
+.button {
+    float: right;
+    margin-top: 10px;
+    font-size: 20px;
+    background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.li {
+    margin-top: 10px;
+    font-size: 20px;
+    padding-top: 10px;
+    color: rgb(255, 153, 0);
+    list-style-type: '⇒';
+    font-weight: 900;
+    margin-left: 10px;
+    
+}
+
+.li:hover{
+    color: rgb(246, 245, 245);
+}
+
+.link {
+    text-decoration: none;
+}
+
+.main {
+    height: 55px;
+    margin-top: 10px;
+}
+
+.main:hover {
+    background: #458385;
+    border-radius: 6px;
+    color: rgb(0, 0, 0);
+    transition: 0.35s;
+
+}
+
+
+.input {
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+.notActive {
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 20px;
+    padding: 7px;
+    background-color: #436b98;
+    border-style: solid;
+    border-color: #898989;
+    border-width: 1px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+.notActive:hover{
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 20px;
+    padding: 7px;
+    background-color: #2a4361;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    transition: 0.75s;
+
+}

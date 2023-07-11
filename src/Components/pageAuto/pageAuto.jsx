@@ -8,12 +8,10 @@ const PageAuto = ({ ex }) => {
   console.log(value, value2);
 
   return (
-    <div className={s.root}>
-      version 1
       <div className={s.wrapper}>
         <span className={s.top}>Авторизируйтесь что бы войти</span> <p />
         <div className={s.login}>Login </div>
-        <input className={s.inputLogin} value={value} onChange={(e) => setValue(e.target.value)} />
+        <input  name="pincode" className={s.inputLogin} value={value} onChange={(e) => setValue(e.target.value)} />
         <div className={s.password}>Password </div>
         <input className={s.inputPassword} value={value2} onChange={(e) => setValue2(e.target.value)} />
         <div>
@@ -22,7 +20,6 @@ const PageAuto = ({ ex }) => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 

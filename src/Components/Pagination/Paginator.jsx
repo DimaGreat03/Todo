@@ -1,15 +1,17 @@
 import axios from "axios";
 import React from "react";
 import s from "./pagination.module.css";
+import { Link } from "react-router-dom";
 
-const Paginator = ({ setCurrentPage, sort, dima, usersAccount }) => {
+
+const Paginator = ({ setCurrentPage, sort, setDima, dima}) => {
   const [countPages, setCountPages] = React.useState("");
   const [index, setIndex] = React.useState(0);
-
+ 
   React.useEffect(() => {
     axios
-      .get(`https://649299ad428c3d2035d05219.mockapi.io/${usersAccount}?&status=${sort}`)
-      .then((response) => setCountPages(response.data.length));
+      .get(`https://649299ad428c3d2035d05219.mockapi.io/users/?&status=${sort}`)
+      .then((response) => setCountPages(response.data.length) || setDima(1))
   }, [sort, dima]);
 
   let total = Math.ceil(countPages / 8);
@@ -28,6 +30,8 @@ const Paginator = ({ setCurrentPage, sort, dima, usersAccount }) => {
           {item}
         </button>
       ))}
+            {/* <Link to="/deleted"><button className={s.notActive}> Deleted tasks</button></Link> */}
+
     </div>
   );
 };

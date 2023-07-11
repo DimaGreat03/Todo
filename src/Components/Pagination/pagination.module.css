@@ -1,23 +1,27 @@
 .active {
-  background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
-  color: white;
   font-size: 17px;
-  margin-left: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 7px;
   padding-left: 8px;
   padding-right: 8px;
-  border-color: white;
-  border-width: 2px;
+  margin-right: 7px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-color: #feffff;
+  margin-top: 10px;
 }
 
 .notActive {
-  background: linear-gradient(#010617, #080a21, #181c54, #2b3677, #406691);
-  color: white;
   font-size: 17px;
-  margin-left: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 7px;
   padding-left: 8px;
   padding-right: 8px;
+  margin-right: 7px;
+  background-color: #384bb9;
+  color: white;
+  border-color: #8796a6;
+}
+
+.notActive:hover {
+  background-color: #26337c;
+  border-color: white;
 }
